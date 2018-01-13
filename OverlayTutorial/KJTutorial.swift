@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct KJTutorial {
+class KJTutorial: NSObject {
   
   enum KJTutorialPosition {
     case top
@@ -32,6 +32,17 @@ struct KJTutorial {
   var iconFrame: CGRect = CGRect.zero
   var isArrowHidden: Bool = false
   
+    //MARK: Init
+    init(focusRectangle: CGRect, focusRectangleCornerRadius: CGFloat, message: NSAttributedString, messagePosition: CGPoint, icon: UIImage?, iconFrame: CGRect, isArrowHidden: Bool) {
+        self.focusRectangle = focusRectangle;
+        self.focusRectangleCornerRadius = focusRectangleCornerRadius;
+        self.message = message;
+        self.messagePosition = messagePosition;
+        self.icon = icon  ;
+        self.iconFrame=iconFrame;
+        self.isArrowHidden=isArrowHidden;
+    }
+    
   // MARK: - Helpers
   
   static func getMessageFrameAt(position: KJTutorialPosition, message: String, font: UIFont) -> CGRect {
