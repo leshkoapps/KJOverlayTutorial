@@ -15,7 +15,7 @@ class Tutorial3ViewController: UIViewController {
   @IBOutlet weak var btnTut2: UIButton!
   @IBOutlet weak var btnTut3: UIButton!
   
-  lazy var tutorialVC: KJOverlayTutorialVC = {
+  @objc lazy var tutorialVC: KJOverlayTutorialVC = {
     return KJOverlayTutorialVC()
   }()
 
@@ -38,13 +38,13 @@ class Tutorial3ViewController: UIViewController {
     // Dispose of any resources that can be recreated.
   }
   
-  func showTutorial() {
+  @objc func showTutorial() {
     
     // tut1
     let focusRect1 = self.imvTut.frame
     let message1 = "Hello, this is your avatar"
     let message1Center = CGPoint(x: self.view.bounds.width/2, y: focusRect1.maxY + 24)
-    var tut1 = KJTutorial.textTutorial(focusRectangle: focusRect1, text: message1, textPosition: message1Center)
+    let tut1 = KJTutorial.textTutorial(focusRectangle: focusRect1, text: message1, textPosition: message1Center)
     tut1.isArrowHidden = true
     
     // tut2

@@ -12,7 +12,7 @@ class Tutorial1ViewController: UIViewController {
   
   @IBOutlet weak var tvTut: UITextView!
   
-  lazy var tutorialVC: KJOverlayTutorialVC = {
+  @objc lazy var tutorialVC: KJOverlayTutorialVC = {
     return KJOverlayTutorialVC()
   }()
 
@@ -32,7 +32,7 @@ class Tutorial1ViewController: UIViewController {
     super.didReceiveMemoryWarning()
   }
   
-  func showTutorial() {
+  @objc func showTutorial() {
     
     // tut1
     let focusRect1 = self.tvTut.frame
