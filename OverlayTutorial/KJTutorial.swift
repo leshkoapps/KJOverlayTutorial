@@ -8,17 +8,17 @@
 
 import UIKit
 
-class KJTutorial: NSObject {
+@objc public class KJTutorial: NSObject {
   
-    enum KJTutorialPosition {
+    @objc public enum  KJTutorialPosition : Int {
         case top
         case bottom
     }
   
     // MARK: - Configs
   
-    @objc static var leftPadding: CGFloat = 20
-    @objc static var rightPadding: CGFloat = 20
+    @objc static var leftPadding: CGFloat = 30
+    @objc static var rightPadding: CGFloat = 30
     @objc static var topPadding: CGFloat = 64
     @objc static var bottomPadding: CGFloat = 64
   
@@ -33,7 +33,7 @@ class KJTutorial: NSObject {
     @objc var isArrowHidden: Bool = false
   
     //MARK: Init
-    @objc init(focusRectangle: CGRect, focusRectangleCornerRadius: CGFloat, message: NSAttributedString, messagePosition: CGPoint, icon: UIImage?, iconFrame: CGRect, isArrowHidden: Bool) {
+    @objc public init(focusRectangle: CGRect, focusRectangleCornerRadius: CGFloat, message: NSAttributedString, messagePosition: CGPoint, icon: UIImage?, iconFrame: CGRect, isArrowHidden: Bool) {
         self.focusRectangle = focusRectangle;
         self.focusRectangleCornerRadius = focusRectangleCornerRadius;
         self.message = message;
@@ -45,7 +45,7 @@ class KJTutorial: NSObject {
     
     // MARK: - Helpers
   
-    static func getMessageFrameAt(position: KJTutorialPosition, message: String, font: UIFont) -> CGRect {
+    @objc public static func getMessageFrameAt(position: KJTutorialPosition, message: String, font: UIFont) -> CGRect {
     
         let screenBounds = UIScreen.main.bounds
     
@@ -64,7 +64,7 @@ class KJTutorial: NSObject {
         return CGRect(x: x, y: y, width: size.width, height: size.height)
     }
   
-    @objc static func textTutorial(focusRectangle: CGRect, text: String, textPosition: CGPoint) -> KJTutorial {
+    @objc public static func textTutorial(focusRectangle: CGRect, text: String, textPosition: CGPoint) -> KJTutorial {
         let attrs = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 18),
                  NSAttributedStringKey.foregroundColor : UIColor.white]
         let message = NSAttributedString(string: text, attributes: attrs)
@@ -72,7 +72,7 @@ class KJTutorial: NSObject {
         return tutorial
     }
   
-    @objc static func textWithIconTutorial(focusRectangle: CGRect, text: String, textPosition: CGPoint, icon: UIImage, iconFrame: CGRect) -> KJTutorial {
+    @objc public static func textWithIconTutorial(focusRectangle: CGRect, text: String, textPosition: CGPoint, icon: UIImage, iconFrame: CGRect) -> KJTutorial {
         let attrs = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 18),
                  NSAttributedStringKey.foregroundColor : UIColor.white]
         let message = NSAttributedString(string: text, attributes: attrs)
