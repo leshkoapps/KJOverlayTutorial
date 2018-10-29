@@ -25,13 +25,12 @@ import UIKit
   
     public override func viewDidLoad() {
         super.viewDidLoad()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
+        self.view.addGestureRecognizer(tap)
     }
   
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-    
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
-        self.view.addGestureRecognizer(tap)
     }
   
     public override func viewDidAppear(_ animated: Bool) {
@@ -41,6 +40,11 @@ import UIKit
     public override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    public override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator);
+        self.close();
     }
   
     // MARK: - Methods
@@ -162,11 +166,20 @@ import UIKit
                 fromPoint = lblMessage.frame.topCenterPoint.moveY(-5)
                 toPoint = tutorial.focusRectangle.bottomCenterPoint.moveY(5)
             }
-            else if toCenterPoint.y>fromCenterPoint.y {
+            else {
                 fromPoint = lblMessage.frame.bottomCenterPoint.moveY(5)
                 toPoint = tutorial.focusRectangle.topCenterPoint.moveY(-5)
             }
-      
+            
+            /*
+            if toCenterPoint.x<fromCenterPoint.x {
+                toPoint = tutorial.focusRectangle.rightCenterPoint.moveX(5)
+            }
+            else {
+                toPoint = tutorial.focusRectangle.leftCenterPoint.moveX(-5)
+            }
+            */
+            
             let lineLayer = CAShapeLayer()
             lineLayer.path = createCurveLinePath(from: fromPoint, to: toPoint)
             lineLayer.strokeColor = UIColor.white.cgColor
