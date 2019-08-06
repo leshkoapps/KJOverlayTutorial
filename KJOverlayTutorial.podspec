@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "KJOverlayTutorial"
-  s.version          = "1.0"
+  s.version          = "1.0.0"
   s.summary          = "A Tutorial for iOS"
   s.homepage         = "https://github.com/tranquan/KJOverlayTutorial"
   s.license          = { :type => "MIT" }
